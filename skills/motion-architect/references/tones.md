@@ -1,6 +1,6 @@
 # Tonos
 
-Basados en los presets de **Brag** (latent-spaces/brag, MIT), traducidos a parámetros de Remotion. Cada tono cambia el ritmo, la tipografía y las transiciones.
+Presets traducidos a parámetros de Remotion. Cada tono cambia el ritmo, la tipografía y las transiciones.
 
 | Tono | Escenas (15–20 s) | Por escena | Tipografía | Springs / easing | Transiciones |
 |---|---|---|---|---|---|

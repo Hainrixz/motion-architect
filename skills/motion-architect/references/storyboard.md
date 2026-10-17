@@ -1,6 +1,6 @@
 # Storyboard
 
-Adaptado del método de **Brag** (latent-spaces/brag, MIT) a Remotion. Un storyboard es una página. Es la estrella polar del video.
+Un storyboard es una página. Es la estrella polar del video.
 
 ## Estructura por defecto
 ```

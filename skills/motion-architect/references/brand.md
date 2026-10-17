@@ -17,8 +17,8 @@ La marca vive en `studio/brand.json`. Los componentes la leen desde `studio/src/
 1. **La persona la da**: hex, fuentes, logo. Úsala tal cual.
 2. **De una imagen o captura**: léela, extrae 3 a 5 colores dominantes (fondo, texto, acento) e identifica el estilo tipográfico.
 3. **De un sitio**: pide la URL y mira su CSS y capturas. Busca variables `--color-*` y `font-family`.
-4. **No hay marca**: usa `ui-ux-pro-max` para proponer estilo, paleta y par tipográfico según el tono. Si está instalado, su buscador sirve:
-   `python3 <skill-dir>/scripts/search.py "<producto> <industria> <mood>" --design-system -p "<Nombre>"` te da estilo, paleta y fuentes de un jalón. Para algo puntual: `--domain color` o `--domain typography`. Los flags exactos están en su SKILL.md.
+4. **No hay marca**: usa el motor de diseño (`design-engine.md`) para proponer estilo, paleta y par tipográfico según el tono:
+   `python3 <skill-dir>/engine/design/scripts/search.py "<producto> <industria> <mood>" --design-system -p "<Nombre>"`
 
 ## Cambiar fuentes
 1. Mira si existe `studio/node_modules/@remotion/google-fonts/dist/esm/<NombreSinEspacios>.mjs`.

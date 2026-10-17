@@ -14,7 +14,7 @@ Pega esto en Claude Code (después de `./install.sh`) para ver el flujo completo
 ```
 
 Lo que va a pasar:
-1. Claude analiza la referencia con `/watch` y te resume su motion spec.
+1. Claude ve la referencia y te resume su motion spec: ritmo, cortes, paleta y tipo de movimiento.
 2. Actualiza `studio/brand.json` y las fuentes.
 3. Te muestra el storyboard (`studio/storyboards/pulso.md`) y espera tu sí.
 4. Crea `studio/src/compositions/Pulso.tsx`, revisa stills y te pide abrir Remotion Studio.

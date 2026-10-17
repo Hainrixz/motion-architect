@@ -1,6 +1,6 @@
 import { Easing, interpolate, spring } from "remotion";
 
-// Curvas tomadas del criterio de Emil Kowalski: ease-out fuerte para entradas,
+// Curvas de la casa: ease-out fuerte para entradas,
 // ease-in-out para movimientos dentro de pantalla. Nada de ease-in para entrar.
 export const ease = {
   out: Easing.bezier(0.23, 1, 0.32, 1),
@@ -40,7 +40,7 @@ export const springAt = (
 
 /**
  * Entrada estándar: sube unos px, aparece y se enfoca.
- * Regla de Emil: nunca escalar desde 0; arrancar en 0.96 se siente natural.
+ * Regla: nunca escalar desde 0; arrancar en 0.96 se siente natural.
  */
 export const enterStyle = (p: number, distance = 24): React.CSSProperties => ({
   opacity: p,

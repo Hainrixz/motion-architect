@@ -6,8 +6,8 @@
     {
       "name": "motion-architect",
       "source": "./",
-      "description": "Agente de motion graphics: referencias → storyboard → Remotion → mp4, todo local.",
-      "version": "0.1.0"
+      "description": "Agente de motion graphics: referencias → storyboard → animación → mp4, todo local.",
+      "version": "0.2.0"
     }
   ]
 }

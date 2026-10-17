@@ -3,11 +3,8 @@
 El audio es opcional. Una pista de fondo bien elegida y pocos SFX en los momentos clave suelen ser mejor que el silencio, pero menos es más.
 
 ## De dónde sale
-- **De la persona**: ponlo en `studio/public/music/` o `studio/public/sfx/`.
-- **Brag**: si el plugin `brag` está instalado, trae SFX CC0 de Kenney y pistas con cues ya analizados. Encuéntralos con:
-  `find ~/.claude/plugins ~/.claude/skills -path "*brag/assets*" -maxdepth 8 -type d 2>/dev/null | head`
-  Copia **solo** los archivos que vas a usar a `studio/public/`. Revisa el README de `assets/music/` para la licencia de cada pista antes de usarla en algo comercial.
-- Nunca descargues música con derechos de una plataforma para meterla en el video.
+- **SFX incluidos (CC0)** en `studio/public/sfx/`: `interface/` (clicks, switches, drops), `impact/` (golpes, campanas), `ui/`, `casino/` y `keyboard/` (teclas sueltas para animaciones de tipeo). El índice con usos recomendados y riesgo de agudos está en `sfx-library.md`. Úsalos con `staticFile("sfx/impact/impactSoft_medium_000.ogg")`.
+- **Música**: la pone la persona en `studio/public/music/`. Si no tiene, sugiérele bibliotecas con licencia clara. Nunca descargues música con derechos de una plataforma para meterla en el video.
 
 ## En Remotion
 ```tsx
@@ -18,7 +15,7 @@ import { Audio, Sequence, staticFile, interpolate } from "remotion";
 
 ## Sincronizar con el beat
 - Si conoces los BPM: `frames_por_beat = 30 * 60 / bpm` (120 bpm = 15 frames). Alinea los cortes y las entradas a múltiplos de eso.
-- Para detectar los beats localmente puedes usar el script de Brag (`analyze_music_cues.py` con `uv`) si está instalado, o ffmpeg para ver la energía:
+- Para ver la energía de la pista y ubicar los golpes, localmente con ffmpeg:
   `ffmpeg -i track.mp3 -af "astats=metadata=1:reset=15,ametadata=print:key=lavfi.astats.Overall.RMS_level" -f null - 2>&1 | grep RMS | head`
 - Los cortes grandes van en los golpes fuertes. Los staggers chicos pueden ir a la corchea (la mitad del beat).
 

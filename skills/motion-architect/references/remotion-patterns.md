@@ -1,6 +1,6 @@
 # Patrones de Remotion
 
-Para la API completa usa `remotion-best-practices` (remotion-dev/skills) si está instalado, o https://www.remotion.dev/docs.
+Para la API completa: https://www.remotion.dev/docs (la búsqueda de la doc funciona bien con WebFetch).
 
 ## Reglas de oro
 - **Todo se anima con `useCurrentFrame()`.** Nada de CSS transitions, `@keyframes`, `setTimeout` ni `requestAnimationFrame`: no se renderizan.

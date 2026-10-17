@@ -1,6 +1,6 @@
 # Principios de movimiento
 
-Destilado del criterio de **Emil Kowalski** (emilkowalski/skills, MIT; animations.dev) y adaptado a video. Si `emil-design-eng` o `review-animations` están instalados, cárgalos para la revisión final.
+El resumen operativo para video. La versión completa está en `craft/` (filosofía, estándares, recetas y vocabulario).
 
 ## Easing
 - **Entradas: ease-out.** Arrancan rápido y frenan suave, se sienten responsivas. Usa `ease.out` = `bezier(0.23, 1, 0.32, 1)`.

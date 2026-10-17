@@ -6,7 +6,7 @@ import { Background, Caption, CardStack, Counter, KineticTitle, LogoReveal, Safe
 import { useScale } from "../lib/useScale";
 
 // Demo de referencia: hook → reveal → highlights → dato → outro.
-// Es la estructura de storyboard de Brag, construida con piezas reutilizables.
+// Estructura base de storyboard, construida con piezas reutilizables.
 const T = 12; // frames de transición
 
 export const DEMO_DURATION = 75 + 90 + 105 + 75 + 90 - 4 * T;
@@ -42,7 +42,7 @@ const Highlights: React.FC = () => {
       <CardStack
         delay={14}
         cards={[
-          { icon: "▶", title: "Videos", body: "Claude los ve con /watch" },
+          { icon: "▶", title: "Videos", body: "Claude los ve y los analiza" },
           { icon: "◼", title: "Imágenes", body: "Estilo, color y composición" },
           { icon: "✦", title: "Tu marca", body: "Paleta y tipografía propias" },
         ]}

@@ -26,16 +26,16 @@
 
 ## Qué es
 
-**Motion Architect** es un agente de Claude Code para hacer motion graphics. Junta en una sola instalación las mejores skills de diseño y animación que están saliendo, sobre un estudio de [Remotion](https://www.remotion.dev) listo para usar:
+**Motion Architect** es un agente para Claude Code que hace motion graphics por ti. Le hablas como a un motion designer y te entrega el video renderizado.
 
-| Pieza | Qué aporta |
+| | |
 |---|---|
-| **[Brag](https://github.com/latent-spaces/brag)** | El método de video de lanzamiento: storyboard hook → reveal → highlights → remate, tonos y audio con intención |
-| **[Emil Kowalski skills](https://github.com/emilkowalski/skills)** | El criterio de animación: easing, timing, springs y el pulido que se siente aunque no se vea |
-| **[UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)** | Estilos, paletas, pares tipográficos y jerarquía visual |
-| **[watch](https://github.com/bradautomates/claude-video)** | Claude *ve* tus videos de referencia: frames y transcripción |
-| **[Remotion Agent Skills](https://github.com/remotion-dev/skills)** | Buenas prácticas oficiales de Remotion |
-| **Estudio Motion Architect** | Proyecto Remotion con componentes animados, 4 formatos y tu marca en un JSON |
+| 👁 **Ve tus referencias** | Le pasas un video (link o archivo) o una imagen y entiende el ritmo, los cortes, la paleta y el tipo de movimiento |
+| 🎨 **Diseña con tu marca** | Colores, tipografías y estilo visual, ya sea de tu marca o propuestos por él |
+| 🎬 **Escribe el storyboard** | Hook, desarrollo y remate, con tiempos exactos. Tú lo apruebas antes de que se anime nada |
+| ✨ **Anima con criterio** | Easing, timing y springs pensados para que se sienta profesional, no "hecho con IA" |
+| 📐 **Renderiza en cualquier formato** | Vertical, horizontal, cuadrado o 4:5, con safe zones para Reels y TikTok |
+| 🔊 **Pone sonido** | Librería de efectos incluida, sincronizados con la animación |
 
 ## La misión
 
@@ -58,28 +58,21 @@ cd motion-architect
 ./install.sh
 ```
 
-Eso es todo. El instalador:
-
-1. Revisa e instala dependencias (Node, ffmpeg, yt-dlp, Python).
-2. Instala el estudio de Remotion (`studio/`).
-3. Instala en Claude Code: Motion Architect, Brag, UI/UX Pro Max, watch, las skills de Emil Kowalski y las de Remotion.
-4. Crea el atajo `~/motion-architect` para que el agente encuentre el estudio desde cualquier carpeta.
-
-Puedes correrlo varias veces sin problema: lo que ya está instalado se salta. Usa `./install.sh --yes` para no responder preguntas.
+Eso es todo. El instalador revisa lo que falta, prepara el estudio de animación y deja el agente listo en Claude Code. Puedes correrlo varias veces sin problema, y con `./install.sh --yes` no te pregunta nada. Al terminar, reinicia Claude Code.
 
 > **Repo privado:** mientras el repo sea privado, para clonarlo necesitas acceso en GitHub.
 
 <details>
 <summary><b>Opcional: transcripción de videos sin subtítulos</b></summary>
 
-`watch` usa los subtítulos del video cuando existen. Para los que no tienen, puede transcribir con Whisper (Groq u OpenAI). Agrega **una** de estas líneas en `~/.config/watch/.env`:
+Motion Architect usa los subtítulos del video cuando existen. Para los que no tienen, puede transcribir el audio si agregas **una** de estas líneas en `~/.config/motion-architect/.env`:
 
 ```
 GROQ_API_KEY=...
 OPENAI_API_KEY=...
 ```
 
-Sin llave, Claude igual ve los frames del video, que es lo que importa para analizar movimiento.
+Sin llave, igual ve los frames del video, que es lo que importa para analizar movimiento.
 </details>
 
 ## Cómo se usa
@@ -93,10 +86,10 @@ Abre Claude Code en la carpeta del repo (o en cualquier otra; el agente encuentr
 Claude va a:
 
 1. **Preguntarte lo que falte, todo en un mensaje:** formato, duración, tono, marca y música.
-2. **Ver tus referencias:** videos (URL o archivo) con `/watch`, imágenes y capturas.
+2. **Ver tus referencias:** videos (URL o archivo), imágenes y capturas.
 3. **Armar tu marca:** colores, fuentes y estilo en `studio/brand.json`.
 4. **Escribir el storyboard** y esperar a que lo apruebes.
-5. **Construir la animación** en React con Remotion y revisarla con el criterio de Emil Kowalski.
+5. **Construir la animación** y revisarla cuadro por cuadro antes de mostrártela.
 6. **Abrir Remotion Studio** en `localhost:3000` para que veas el preview y lo ajustes.
 7. **Renderizar** el mp4 en los formatos que pediste, con poster.
 
@@ -143,13 +136,13 @@ Todo se diseña con unidades relativas, así que una misma animación se adapta 
 ```mermaid
 flowchart LR
   A[Tu idea + referencias] --> B{/motion}
-  B --> C[watch<br/>ve videos]
-  B --> D[UI/UX Pro Max<br/>marca y estilo]
-  C --> E[Storyboard<br/>método Brag]
+  B --> C[Análisis<br/>de referencias]
+  B --> D[Marca<br/>y estilo]
+  C --> E[Storyboard]
   D --> E
-  E -->|apruebas| F[Composición React<br/>Remotion]
-  F --> G[Revisión<br/>criterio Emil]
-  G --> H[Remotion Studio<br/>preview]
+  E -->|apruebas| F[Animación]
+  F --> G[Revisión<br/>de calidad]
+  G --> H[Preview en vivo]
   H --> I[mp4 en 9:16 · 16:9 · 1:1 · 4:5]
 ```
 
@@ -157,7 +150,7 @@ flowchart LR
 motion-architect/
 ├─ install.sh                    instalador de un comando
 ├─ .claude-plugin/               plugin de Claude Code
-├─ skills/motion-architect/      el agente y sus referencias (storyboard, tonos, formatos, principios…)
+├─ skills/motion-architect/      el agente: método, motores de visión y diseño, criterio de animación
 ├─ agents/reference-analyst.md   subagente que analiza videos de referencia
 ├─ commands/                     /motion y /motion-render
 └─ studio/                       proyecto Remotion
@@ -168,21 +161,11 @@ motion-architect/
    └─ public/                    referencias, música, SFX, logos
 ```
 
-## Créditos
-
-Motion Architect se apoya en el trabajo de otras personas. Cada pieza se instala desde su repo original y conserva su licencia. Detalles en [CREDITS.md](CREDITS.md).
-
-- **Brag**, de Shunit Haviv Hakimi / Latent Spaces (MIT)
-- **Skills de Emil Kowalski** (MIT), con más en [animations.dev](https://animations.dev)
-- **UI/UX Pro Max**, de nextlevelbuilder (MIT)
-- **claude-video / watch**, de Bradley Bonanno (MIT)
-- **Remotion** y Remotion Agent Skills, de Remotion AG
-
 ## Licencia
 
-El código de Motion Architect es **MIT**.
+Motion Architect es **MIT**. Los componentes open source incluidos están listados en [third_party/NOTICES.md](third_party/NOTICES.md).
 
-**Ojo con Remotion:** es gratis para personas, organizaciones sin fines de lucro y empresas de hasta 3 personas. Las empresas más grandes necesitan una [licencia de empresa](https://www.remotion.dev/license). Revisa sus términos antes de usarlo comercialmente.
+**Ojo:** el motor de video es [Remotion](https://www.remotion.dev), que es gratis para personas, organizaciones sin fines de lucro y empresas de hasta 3 personas. Las empresas más grandes necesitan una [licencia de empresa](https://www.remotion.dev/license). Revisa sus términos antes de usarlo comercialmente.
 
 ---
 

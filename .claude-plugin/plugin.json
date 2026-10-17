@@ -1,6 +1,6 @@
 {
   "name": "motion-architect",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Motion graphics con Claude y Remotion, todo local. Le das videos, imágenes y tu marca; Claude diseña, anima y renderiza en vertical, horizontal, cuadrado o 4:5.",
   "author": { "name": "Enrique Rocha", "url": "https://github.com/Hainrixz" },
   "homepage": "https://github.com/Hainrixz/motion-architect",

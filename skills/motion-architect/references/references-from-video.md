@@ -3,18 +3,14 @@
 La persona puede pasar una URL (YouTube, Instagram, TikTok, X; lo que soporte yt-dlp) o un archivo local.
 
 ## Cómo verlas
-1. Usa la skill **`watch`** (plugin `watch@claude-video`). Descarga el video, extrae frames con ffmpeg y trae la transcripción si hay captions.
-   - Si no hay llave de Whisper, solo trae frames. Para analizar movimiento eso alcanza.
-   - Para movimiento fino: `--detail token-burner` (sin tope de frames) o acota con `--start 0:05 --end 0:12 --fps 6`.
-   - Sin llave de Whisper: `--no-whisper`.
-2. Si `watch` no está, hazlo a mano con ffmpeg, todo local:
+1. Usa el **motor de visión** (`vision.md`): `python3 <skill-dir>/engine/vision/analyze.py "<url-o-ruta>" --engine local`. Lee con Read los frames que devuelve.
+   - Para movimiento fino: `--detail token-burner` o acota con `--start 0:05 --end 0:12 --fps 6`.
+   - Sin llave de transcripción: `--no-whisper`.
+2. Para medir cortes exactos también puedes usar ffmpeg:
    ```bash
-   mkdir -p studio/public/references/frames
-   ffmpeg -i ref.mp4 -vf "fps=4,scale=720:-1" studio/public/references/frames/f_%04d.jpg
-   ffmpeg -i ref.mp4 -vf "select='gt(scene,0.3)',showinfo" -vsync vfr studio/public/references/frames/cut_%03d.jpg 2>&1 | grep pts_time
+   ffmpeg -i ref.mp4 -vf "select='gt(scene,0.3)',showinfo" -vsync vfr /tmp/cut_%03d.jpg 2>&1 | grep -o "pts_time:[0-9.]*"
    ```
-   El segundo comando te da los tiempos de corte.
-3. Para varios videos, despacha el subagente `reference-analyst` (uno por video, en paralelo).
+3. Si hay varios videos, despacha el subagente `reference-analyst` (uno por video, en paralelo).
 
 ## Qué extraer (motion spec)
 ```json

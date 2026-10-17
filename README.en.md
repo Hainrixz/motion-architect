@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="docs/hero.svg" alt="Motion Architect — motion graphics with Claude and Remotion, fully local" width="100%">
+  <img src="docs/hero.svg" alt="Motion Architect — motion graphics with Claude, fully local" width="100%">
 </p>
 
 <p align="center">
   <b>Motion graphics with Claude, on your machine.</b><br>
-  Give it videos, images and your brand. Claude designs, animates and renders with Remotion.
+  Give it videos, images and your brand. It designs, animates and renders.
 </p>
 
 <p align="center"><a href="README.md">Español</a></p>
@@ -13,16 +13,16 @@
 
 ## What it is
 
-**Motion Architect** is a Claude Code agent for motion graphics. One install brings together the best design and animation skills out there, on top of a ready-to-use [Remotion](https://www.remotion.dev) studio:
+**Motion Architect** is a Claude Code agent that makes motion graphics for you. Talk to it like you would to a motion designer and get a rendered video back.
 
-| Piece | What it brings |
+| | |
 |---|---|
-| **[Brag](https://github.com/latent-spaces/brag)** | Launch-video method: hook → reveal → highlights → punchline storyboard, tones, intentional audio |
-| **[Emil Kowalski skills](https://github.com/emilkowalski/skills)** | Animation taste: easing, timing, springs, the invisible polish |
-| **[UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)** | Styles, palettes, font pairings, visual hierarchy |
-| **[watch](https://github.com/bradautomates/claude-video)** | Claude *watches* your reference videos (frames + transcript) |
-| **[Remotion Agent Skills](https://github.com/remotion-dev/skills)** | Official Remotion best practices |
-| **Motion Architect studio** | Remotion project with animated components, 4 formats, brand in one JSON |
+| 👁 **Watches your references** | Give it a video (link or file) or an image; it picks up rhythm, cuts, palette and motion style |
+| 🎨 **Designs with your brand** | Colors, typography and visual style, either yours or proposed by the agent |
+| 🎬 **Writes the storyboard** | Hook, build-up and punchline with exact timing. You approve it first |
+| ✨ **Animates with taste** | Easing, timing and springs that feel professional, not "AI-made" |
+| 📐 **Renders any format** | Vertical, landscape, square or 4:5, with Reels/TikTok safe zones |
+| 🔊 **Adds sound** | Built-in SFX library, synced to the animation |
 
 Everything runs **locally**: rendering, video analysis and preview. Nothing gets uploaded.
 
@@ -38,9 +38,7 @@ cd motion-architect
 ./install.sh          # --yes for no prompts
 ```
 
-It installs the Remotion studio, and in Claude Code: Motion Architect, Brag, UI/UX Pro Max, watch, Emil Kowalski's skills and Remotion's skills. It is idempotent. Restart Claude Code afterwards.
-
-Optional: add `GROQ_API_KEY` or `OPENAI_API_KEY` to `~/.config/watch/.env` to transcribe videos without captions. Without it, Claude still sees the frames.
+Restart Claude Code afterwards. Optional: add `GROQ_API_KEY` or `OPENAI_API_KEY` to `~/.config/motion-architect/.env` to transcribe videos without captions.
 
 ## Usage
 
@@ -48,9 +46,8 @@ Optional: add `GROQ_API_KEY` or `OPENAI_API_KEY` to `~/.config/watch/.env` to tr
 /motion a 15s vertical reel announcing my finance app, cinematic style
 ```
 
-Claude will: ask what's missing in one message → watch your references → set up your brand (`studio/brand.json`) → write a storyboard and wait for your OK → build the React/Remotion composition and review it against Emil's principles → open Remotion Studio (`cd studio && npm run studio`, http://localhost:3000) → render mp4s in the formats you asked for.
+It asks what's missing in one message, studies your references, sets up your brand, writes a storyboard and waits for your OK, animates and reviews frame by frame, opens a live preview (`cd studio && npm run studio`, http://localhost:3000) and renders mp4s in the formats you asked for.
 
-More prompts:
 ```
 /motion animate my logo (~/Desktop/logo.svg), 5s, 16:9 and 9:16
 Watch https://www.instagram.com/reel/... and make something with that rhythm in my brand. Vertical, 12s.
@@ -66,8 +63,8 @@ Watch https://www.instagram.com/reel/... and make something with that rhythm in 
 | Square 1:1 | 1080×1080 | Feed, LinkedIn |
 | Portrait 4:5 | 1080×1350 | Instagram feed |
 
-## Credits & license
+## License
 
-Each upstream piece is installed from its original repo under its own license. See [CREDITS.md](CREDITS.md). Motion Architect's code is **MIT**.
+Motion Architect is **MIT**. Bundled open-source components are listed in [third_party/NOTICES.md](third_party/NOTICES.md).
 
-**Remotion licensing:** free for individuals, non-profits and companies of up to 3 people. Larger companies need a [company license](https://www.remotion.dev/license).
+The video engine is [Remotion](https://www.remotion.dev): free for individuals, non-profits and companies of up to 3 people. Larger companies need a [company license](https://www.remotion.dev/license).

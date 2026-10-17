@@ -60,51 +60,35 @@ if [ "${#MISSING[@]}" -gt 0 ]; then
 fi
 
 # ── 2. Estudio de Remotion ─────────────────────────────────────────────────
-say "Instalando el estudio de Remotion (studio/)"
+say "Preparando el estudio de animación"
 ( cd "$STUDIO_DIR" && npm install --no-fund --no-audit --loglevel=error )
-ok "dependencias de npm listas"
+ok "estudio listo"
 ( cd "$STUDIO_DIR" && npx tsc --noEmit ) && ok "TypeScript compila"
 
-# ── 3. Skills y plugins de Claude Code ─────────────────────────────────────
+# ── 3. Agente en Claude Code ───────────────────────────────────────────────
 if [ "$SKILLS" = 1 ]; then
   if ! has claude; then
     warn "No encontré el CLI 'claude'. Instala Claude Code (https://claude.com/claude-code) y vuelve a correr."
     warn "Mientras tanto, el estudio ya funciona: cd studio && npm run studio"
   else
-    say "Instalando skills de diseño y animación"
-    MARKETS="$(claude plugin marketplace list 2>/dev/null || true)"
-    PLUGINS="$(claude plugin list 2>/dev/null || true)"
-
-    add_plugin() { # $1 fuente  $2 nombre-marketplace  $3 plugin  $4 etiqueta
-      if ! grep -qE "(❯ |^)$2\$" <<<"$MARKETS"; then
-        claude plugin marketplace add "$1" >/dev/null 2>&1 || true
-        MARKETS="$MARKETS"$'\n'"$2"
-      fi
-      if grep -q "$3@$2" <<<"$PLUGINS"; then
-        ok "$4 (ya estaba)"
-      elif claude plugin install "$3@$2" >/dev/null 2>&1; then
-        ok "$4"
-      else
-        warn "$4: no se pudo instalar. Dentro de Claude Code: /plugin install $3@$2"
-      fi
-    }
-
-    add_plugin "$REPO_DIR"                       motion-architect     motion-architect  "Motion Architect (agente + /motion)"
-    add_plugin latent-spaces/brag                brag                 brag              "Brag (método de video de lanzamiento)"
-    add_plugin nextlevelbuilder/ui-ux-pro-max-skill ui-ux-pro-max-skill ui-ux-pro-max   "UI/UX Pro Max (estilo, paleta, tipografía)"
-    add_plugin bradautomates/claude-video        claude-video         watch             "watch (Claude ve videos)"
-
-    if npx -y skills@latest add emilkowalski/skills -g -y -a claude-code \
-         --skill emil-design-eng review-animations animate animation-vocabulary improve-animations >/dev/null 2>&1; then
-      ok "Emil Kowalski (emil-design-eng, review-animations, animate…)"
+    say "Instalando el agente Motion Architect"
+    if ! claude plugin marketplace list 2>/dev/null | grep -qE "(❯ |^)motion-architect$"; then
+      claude plugin marketplace add "$REPO_DIR" >/dev/null 2>&1 || true
     else
-      warn "Emil Kowalski: corre a mano → npx skills add emilkowalski/skills"
+      claude plugin marketplace update motion-architect >/dev/null 2>&1 || true
     fi
-    if npx -y skills@latest add remotion-dev/skills -g -y -a claude-code --skill '*' >/dev/null 2>&1; then
-      ok "Remotion Agent Skills (remotion-best-practices…)"
+    if claude plugin list 2>/dev/null | grep -q "motion-architect@motion-architect"; then
+      claude plugin update motion-architect@motion-architect >/dev/null 2>&1 || true
+      ok "agente al día"
+    elif claude plugin install motion-architect@motion-architect >/dev/null 2>&1; then
+      ok "agente instalado (/motion)"
     else
-      warn "Remotion skills: corre a mano → npx skills add remotion-dev/skills"
+      fail "no se pudo instalar el agente. Dentro de Claude Code: /plugin marketplace add $REPO_DIR"
     fi
+    python3 "$REPO_DIR/skills/motion-architect/engine/vision/setup.py" --check >/dev/null 2>&1 \
+      && ok "motor de visión listo" || warn "motor de visión: revisa que ffmpeg y yt-dlp estén instalados"
+    python3 "$REPO_DIR/skills/motion-architect/engine/design/scripts/search.py" "minimal" --domain color -n 1 >/dev/null 2>&1 \
+      && ok "motor de diseño listo" || warn "motor de diseño: revisa python3"
   fi
 fi
 
@@ -115,12 +99,12 @@ if [ "$REPO_DIR" != "$HOME/motion-architect" ] && [ ! -e "$HOME/motion-architect
   ok "atajo creado: ~/motion-architect → $REPO_DIR"
 fi
 
-# ── 5. Whisper (opcional) ──────────────────────────────────────────────────
-if [ -f "$HOME/.config/watch/.env" ] && grep -qE '^(GROQ|OPENAI)_API_KEY=.+' "$HOME/.config/watch/.env"; then
-  ok "watch: transcripción con Whisper configurada"
+# ── 5. Transcripción (opcional) ─────────────────────────────────────────────
+ENV_FILE="$HOME/.config/motion-architect/.env"
+if [ -f "$ENV_FILE" ] && grep -qE '^(GROQ|OPENAI)_API_KEY=.+' "$ENV_FILE"; then
+  ok "transcripción de videos activada"
 else
-  warn "Opcional: para transcribir videos sin subtítulos, agrega GROQ_API_KEY u OPENAI_API_KEY en ~/.config/watch/.env"
-  warn "Sin llave, Claude igual ve los frames del video (suficiente para analizar movimiento)."
+  printf "  %s·%s Opcional: para transcribir videos sin subtítulos, agrega GROQ_API_KEY u OPENAI_API_KEY en %s\n" "$c_dim" "$c_off" "$ENV_FILE"
 fi
 
 printf "\n%s  ◆ Listo.%s\n\n" "$c_coral" "$c_off"
