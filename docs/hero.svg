@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="t d">
+  <title id="t">Motion Architect</title>
+  <desc id="d">Motion graphics con Claude y Remotion, todo local.</desc>
+  <defs>
+    <radialGradient id="glow" cx="30%" cy="35%" r="60%">
+      <stop offset="0" stop-color="#FF5B3A" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#FF5B3A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="85%" cy="80%" r="50%">
+      <stop offset="0" stop-color="#7CE0C3" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#7CE0C3" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#F4F1EA" stroke-opacity=".04"/>
+    </pattern>
+    <clipPath id="round"><rect width="1200" height="560" rx="28"/></clipPath>
+  </defs>
+  <style>
+    .sans{font-family:"Bricolage Grotesque",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    /* curvas de Emil: ease-out fuerte para entrar, in-out para moverse */
+    .in{opacity:0;animation:enter .9s cubic-bezier(.23,1,.32,1) forwards}
+    @keyframes enter{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+    .d1{animation-delay:.15s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}.d4{animation-delay:.6s}.d5{animation-delay:.9s}.d6{animation-delay:1.1s}
+
+    .bg{animation:drift 9s cubic-bezier(.77,0,.175,1) infinite alternate}
+    @keyframes drift{to{transform:translate(120px,40px)}}
+
+    .mark{transform-origin:150px 150px;animation:pop .8s cubic-bezier(.34,1.56,.64,1) .1s both}
+    @keyframes pop{from{opacity:0;transform:scale(.6) rotate(-24deg)}to{opacity:1;transform:none}}
+    .ring{transform-origin:150px 150px;animation:spin 2.4s cubic-bezier(.77,0,.175,1) infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* lienzo que cambia de formato: 16:9 → 9:16 → 1:1 → 4:5 */
+    .lbl{opacity:0;animation:lbl 8s infinite}
+    .l1{animation-delay:0s}.l2{animation-delay:2s}.l3{animation-delay:4s}.l4{animation-delay:6s}
+    @keyframes lbl{0%{opacity:0}4%,20%{opacity:1}25%,100%{opacity:0}}
+    .blob{animation:bob 2s cubic-bezier(.77,0,.175,1) infinite alternate}
+    @keyframes bob{to{transform:translate(0,-14px)}}
+
+    /* timeline */
+    .play{animation:play 6s linear infinite}
+    @keyframes play{from{transform:translateX(0)}to{transform:translateX(1020px)}}
+    .fill{transform-origin:90px 0;animation:fill 6s linear infinite}
+    @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    .key{animation:key 6s infinite}
+    @keyframes key{0%,100%{fill:#3A3843}8%,30%{fill:#FF5B3A}}
+    .k1{animation-delay:.5s}.k2{animation-delay:1.6s}.k3{animation-delay:2.7s}.k4{animation-delay:3.8s}.k5{animation-delay:4.9s}
+    .caret{animation:blink 1s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important}}
+  </style>
+
+  <g clip-path="url(#round)">
+    <rect width="1200" height="560" fill="#0B0B0F"/>
+    <rect width="1200" height="560" fill="url(#grid)"/>
+    <rect class="bg" x="-200" y="-100" width="1400" height="760" fill="url(#glow)"/>
+    <rect width="1200" height="560" fill="url(#glow2)"/>
+
+    <!-- marca -->
+    <g transform="translate(-60,-40)">
+      <g class="mark">
+        <rect x="110" y="110" width="80" height="80" rx="20" fill="#FF5B3A"/>
+        <g class="ring"><path d="M150 132a18 18 0 1 0 18 18" fill="none" stroke="#0B0B0F" stroke-width="7" stroke-linecap="round"/></g>
+      </g>
+    </g>
+
+    <!-- titular -->
+    <text class="sans in d1" x="70" y="230" fill="#8A8794" font-size="22" font-weight="600" letter-spacing="3">CLAUDE  ×  REMOTION  ·  100% LOCAL</text>
+    <text class="sans in d2" x="66" y="315" fill="#F4F1EA" font-size="92" font-weight="800" letter-spacing="-3">Motion</text>
+    <text class="sans in d3" x="66" y="400" fill="#FF5B3A" font-size="92" font-weight="800" letter-spacing="-3">Architect</text>
+    <text class="sans in d4" x="70" y="448" fill="#B9B5C2" font-size="24">Le das videos, imágenes y tu marca. Claude anima y renderiza.</text>
+
+    <!-- lienzo multi-formato -->
+    <g class="in d5">
+      <rect x="872" y="118" width="256" height="144" rx="14" fill="#16161D" stroke="#F4F1EA" stroke-opacity=".18" stroke-width="2">
+        <animate attributeName="width" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.18;0.25;0.43;0.5;0.68;0.75;0.93;1" keySplines="0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1" values="256;256;108;108;170;170;152;152;256"/>
+        <animate attributeName="height" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.18;0.25;0.43;0.5;0.68;0.75;0.93;1" keySplines="0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1" values="144;144;192;192;170;170;190;190;144"/>
+        <animate attributeName="x" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.18;0.25;0.43;0.5;0.68;0.75;0.93;1" keySplines="0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1" values="872;872;946;946;915;915;924;924;872"/>
+        <animate attributeName="y" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.18;0.25;0.43;0.5;0.68;0.75;0.93;1" keySplines="0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1;0.77 0 0.175 1" values="118;118;94;94;105;105;95;95;118"/>
+      </rect>
+      <circle class="blob" cx="1000" cy="190" r="22" fill="#FF5B3A"/>
+      <rect class="blob" x="980" y="222" width="40" height="6" rx="3" fill="#F4F1EA" fill-opacity=".5" style="animation-delay:.2s"/>
+      <g class="mono" font-size="15" fill="#8A8794" text-anchor="middle">
+        <text class="lbl l1" x="1000" y="318">16:9 · 1920×1080</text>
+        <text class="lbl l2" x="1000" y="318">9:16 · 1080×1920</text>
+        <text class="lbl l3" x="1000" y="318">1:1 · 1080×1080</text>
+        <text class="lbl l4" x="1000" y="318">4:5 · 1080×1350</text>
+      </g>
+    </g>
+
+    <!-- prompt -->
+    <g class="in d6">
+      <rect x="760" y="352" width="380" height="56" rx="14" fill="#16161D" stroke="#F4F1EA" stroke-opacity=".1"/>
+      <text class="mono" x="782" y="387" font-size="17" fill="#F4F1EA"><tspan fill="#FF5B3A">›</tspan> /motion reel 9:16, cinematic<tspan class="caret" fill="#FF5B3A">▍</tspan></text>
+    </g>
+
+    <!-- timeline -->
+    <g class="in d6">
+      <rect x="90" y="492" width="1020" height="6" rx="3" fill="#24232B"/>
+      <rect class="fill" x="90" y="492" width="1020" height="6" rx="3" fill="#FF5B3A" fill-opacity=".55"/>
+      <g fill="#3A3843">
+        <rect class="key k1" x="180" y="488" width="14" height="14" rx="2" transform="rotate(45 187 495)"/>
+        <rect class="key k2" x="364" y="488" width="14" height="14" rx="2" transform="rotate(45 371 495)"/>
+        <rect class="key k3" x="551" y="488" width="14" height="14" rx="2" transform="rotate(45 558 495)"/>
+        <rect class="key k4" x="738" y="488" width="14" height="14" rx="2" transform="rotate(45 745 495)"/>
+        <rect class="key k5" x="925" y="488" width="14" height="14" rx="2" transform="rotate(45 932 495)"/>
+      </g>
+      <g class="play"><rect x="88" y="476" width="4" height="38" rx="2" fill="#F4F1EA"/><circle cx="90" cy="476" r="6" fill="#F4F1EA"/></g>
+      <g class="mono" font-size="13" fill="#5E5B68">
+        <text x="90" y="532">hook</text><text x="352" y="532">reveal</text><text x="532" y="532">highlights</text><text x="728" y="532">dato</text><text x="912" y="532">outro</text>
+      </g>
+    </g>
+  </g>
+</svg>

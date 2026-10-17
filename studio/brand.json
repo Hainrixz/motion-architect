@@ -1,0 +1,18 @@
+{
+  "name": "Motion Architect",
+  "tagline": "Motion graphics con Claude, en tu compu.",
+  "colors": {
+    "background": "#0B0B0F",
+    "surface": "#16161D",
+    "text": "#F4F1EA",
+    "muted": "#8A8794",
+    "accent": "#FF5B3A",
+    "accent2": "#7CE0C3"
+  },
+  "fonts": {
+    "display": "Bricolage Grotesque",
+    "body": "Geist"
+  },
+  "radius": 28,
+  "style": "Editorial oscuro, acento coral, mucho aire, tipografía grande."
+}

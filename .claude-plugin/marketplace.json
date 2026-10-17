@@ -1,0 +1,13 @@
+{
+  "name": "motion-architect",
+  "owner": { "name": "Enrique Rocha", "url": "https://github.com/Hainrixz" },
+  "metadata": { "description": "Motion Architect: motion graphics con Claude + Remotion." },
+  "plugins": [
+    {
+      "name": "motion-architect",
+      "source": "./",
+      "description": "Agente de motion graphics: referencias → storyboard → Remotion → mp4, todo local.",
+      "version": "0.1.0"
+    }
+  ]
+}
