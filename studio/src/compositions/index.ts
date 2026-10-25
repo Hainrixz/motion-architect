@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+// SPDX-License-Identifier: MIT
+// id: er-22575577
 import { Demo, DEMO_DURATION } from "./Demo";
 
 // Registro de composiciones. Cada entrada se publica en los formatos que indiques

@@ -2,6 +2,7 @@
 name: motion-architect
 description: Crea motion graphics y videos animados con Remotion, de forma local. Analiza videos de referencia (URL o archivo), imágenes y la marca de la persona; arma un storyboard, escribe la composición en React y la renderiza a mp4 en 16:9, 9:16, 1:1 o 4:5. Úsala cuando pidan "hazme una animación", "un motion graphic", "un video animado", "un intro/outro", "un reel animado", "anima este logo", "un video de lanzamiento", "como este video pero con mi marca", o /motion. EN — Create motion graphics locally with Remotion from video/image references and brand; triggers on "make an animation", "motion graphic", "animated video", "launch video", "animate my logo".
 ---
+<!-- Copyright (c) 2026 Enrique Rocha (@soyenriquerocha) · tododeia.com · id er-22575577 -->
 
 # Motion Architect
 

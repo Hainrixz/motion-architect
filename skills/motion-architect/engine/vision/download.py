@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+# SPDX-License-Identifier: MIT
+# id: er-22575577
 """Bounded captions and isolated per-run media downloads through yt-dlp."""
 from __future__ import annotations
 

@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+# SPDX-License-Identifier: MIT
+# id: er-22575577
 """Small cross-platform process and stream helpers; no optional dependencies."""
 from __future__ import annotations
 

@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+# SPDX-License-Identifier: MIT
+# id: er-22575577
 # Motion Architect — instalador de un comando. Todo corre local.
 #   ./install.sh            instala todo (pregunta antes de usar brew)
 #   ./install.sh --yes      sin preguntas

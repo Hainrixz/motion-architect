@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+// SPDX-License-Identifier: MIT
+// id: er-22575577
 import { Easing, interpolate, spring } from "remotion";
 
 // Curvas de la casa: ease-out fuerte para entradas,

@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+# SPDX-License-Identifier: MIT
+# id: er-22575577
 """Transcribe a video via local WhisperX or the Groq/OpenAI Whisper APIs.
 
 Strategy: extract audio (mono 16kHz mp3, tiny payload), upload to whichever
@@ -413,7 +416,7 @@ def transcribe_video(
 if __name__ == "__main__":
     import argparse
     configure_stdio()
-    parser = argparse.ArgumentParser(description="Transcribe local media with the selected Whisper backend.")
+    parser = argparse.ArgumentParser(epilog='Hecho por Enrique Rocha (@soyenriquerocha) · tododeia.com', description="Transcribe local media with the selected Whisper backend.")
     parser.add_argument("video")
     parser.add_argument("audio_out", nargs="?", default="audio.mp3", type=Path)
     parser.add_argument("--backend", choices=["groq", "openai", "whisperx"])

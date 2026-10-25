@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+// SPDX-License-Identifier: MIT
+// id: er-22575577
 import { useVideoConfig } from "remotion";
 
 // Unidad relativa al lado corto: 1u = 1px en un lienzo de 1080.

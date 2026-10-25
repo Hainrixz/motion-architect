@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+# SPDX-License-Identifier: MIT
+# id: er-22575577
 """Gemini engine: Google watches the video (agentic processing) and answers.
 
 Standard library only. The key travels in the x-goog-api-key header and is

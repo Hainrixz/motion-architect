@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+# SPDX-License-Identifier: MIT
+# id: er-22575577
 """Subprocess-only WhisperX 3.8.6 adapter. Never imports Torch into watch."""
 from __future__ import annotations
 

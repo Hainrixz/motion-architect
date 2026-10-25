@@ -170,3 +170,10 @@ Motion Architect es **MIT**. Los componentes open source incluidos están listad
 ---
 
 <p align="center"><sub>Hecho por <a href="https://github.com/Hainrixz">Enrique Rocha</a> · Tododeia</sub></p>
+
+<!-- marca-agua:inicio -->
+
+---
+
+<sub>Hecho por **Enrique Rocha (@soyenriquerocha)** · [tododeia.com](https://www.tododeia.com)⁠​‌‌​​‌​‌​‌‌‌​​‌​​​‌​‌‌​‌​​‌‌​​‌​​​‌‌​​‌​​​‌‌​‌​‌​​‌‌​‌‌‌​​‌‌​‌​‌​​‌‌​‌​‌​​‌‌​‌‌‌​​‌‌​‌‌‌⁠</sub>
+<!-- marca-agua:fin -->

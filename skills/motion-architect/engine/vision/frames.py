@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+# SPDX-License-Identifier: MIT
+# id: er-22575577
 """Probe video metadata and extract frames at an auto-scaled fps.
 
 Auto-fps targets a frame budget, not a fixed rate. Token cost scales with frame

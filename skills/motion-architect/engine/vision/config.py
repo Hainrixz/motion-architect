@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+# SPDX-License-Identifier: MIT
+# id: er-22575577
 """Shared configuration: literal dotenv values, explicit precedence, atomic writes."""
 from __future__ import annotations
 

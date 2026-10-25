@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Enrique Rocha (@soyenriquerocha)
+// SPDX-License-Identifier: MIT
+// id: er-22575577
 // Los cuatro formatos que soporta Motion Architect.
 export const FORMATS = {
   landscape: { width: 1920, height: 1080, label: "16:9 · YouTube, web, presentaciones" },
